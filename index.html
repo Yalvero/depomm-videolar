@@ -68,11 +68,11 @@ const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 V.forEach((x,i)=>{ const b=document.createElement('button'); b.innerHTML=`${i+1} · ${x.name}<small>${Math.round(x.dur)} sn</small>`; b.onclick=()=>load(i,true); tabs.appendChild(b); });
 function load(i,play){ cur=V[i]; [...tabs.children].forEach((b,j)=>b.classList.toggle('on',j===i));
   document.getElementById('hook').textContent=cur.hook;
-  v.src=cur.id+'.mp4'; v.poster=cur.poster; const dl=document.getElementById('dl'); dl.href=cur.id+'.mp4'; dl.textContent=`⬇ Videoyu indir (${cur.mb} MB)`; dl.setAttribute('download',`depomm-${cur.id}.mp4`);
+  v.src=cur.id+'.mp4?r=2'; v.poster=cur.poster+'?r=2'; const dl=document.getElementById('dl'); dl.href=cur.id+'.mp4?r=2'; dl.textContent=`⬇ Videoyu indir (${cur.mb} MB)`; dl.setAttribute('download',`depomm-${cur.id}.mp4`);
   const bar=document.getElementById('bar'); bar.querySelectorAll('b').forEach(e=>e.remove());
   list.innerHTML='';
   cur.clips.forEach((c,j)=>{ if(j){const m=document.createElement('b'); m.style.left=(c.t/cur.dur*100)+'%'; bar.appendChild(m);}
-    const li=document.createElement('li'); li.innerHTML=`<button><img src="${c.k}" alt=""><span><span class="t">${c.title}</span><br><span class="s">${fmt(c.t)} · ${c.d.toFixed(1)} sn</span></span><span class="n">${String(j+1).padStart(2,'0')}</span></button>`;
+    const li=document.createElement('li'); li.innerHTML=`<button><img src="${c.k}?r=2" alt=""><span><span class="t">${c.title}</span><br><span class="s">${fmt(c.t)} · ${c.d.toFixed(1)} sn</span></span><span class="n">${String(j+1).padStart(2,'0')}</span></button>`;
     li.onclick=()=>{v.currentTime=c.t+0.01; v.play();}; list.appendChild(li); });
   history.replaceState(null,'','#'+cur.id); upd(); if(play) v.play().catch(()=>{}); }
 const ci=()=>{let i=0; cur.clips.forEach((c,j)=>{if(v.currentTime>=c.t-0.01) i=j;}); return i;};

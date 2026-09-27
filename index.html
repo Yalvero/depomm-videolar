@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0C0F">
+<title>DepoMM · 3 tanıtım videosu (önizleme)</title>
+<style>
+:root{--bg:#0B0C0F;--card:#16181D;--line:#23262D;--ink:#F4F1EA;--ink2:#8A9099;--or:#D9480F;--or2:#F0692B}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(28px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
+header svg{width:44px;height:44px;flex:none;background:var(--card);border-radius:12px;padding:6px}
+h1{font-size:20px;margin:0;letter-spacing:-.01em}
+h1 b{color:var(--or2)}
+header p{margin:0;color:var(--ink2);font-size:13px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.tabs button{border:0;border-radius:14px;padding:10px 6px;font-weight:700;font-size:14px;background:var(--card);color:var(--ink);line-height:1.2}
+.tabs button small{display:block;font-weight:500;color:var(--ink2);font-size:12px;margin-top:2px}
+.tabs button.on{background:var(--or);color:#fff}
+.tabs button.on small{color:#FFE3D3}
+.hook{margin:0 0 12px;color:var(--ink2);font-size:14px}
+.player{position:relative;border-radius:22px;overflow:hidden;background:#000;aspect-ratio:9/16;box-shadow:0 16px 40px -12px rgba(217,72,15,.35)}
+video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.bar{position:relative;height:8px;border-radius:4px;background:var(--line);margin:14px 0 6px;overflow:hidden;cursor:pointer}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--or2)}
+.bar b{position:absolute;top:0;width:2px;height:100%;background:var(--bg)}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink2);margin-bottom:14px;gap:10px}
+.ctrl{display:flex;gap:8px;margin-bottom:18px}
+.ctrl button,.ctrl a{flex:1;border:0;border-radius:14px;padding:12px 0;background:var(--card);font-weight:700;font-size:15px;color:var(--ink);text-align:center;text-decoration:none}
+.ctrl .main{background:var(--ink);color:var(--bg)}
+h2{font-size:15px;margin:0 0 10px;color:var(--ink2);font-weight:600}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+li button{width:100%;display:flex;align-items:center;gap:12px;border:0;border-radius:16px;background:var(--card);padding:8px;text-align:left;color:var(--ink)}
+li img{width:48px;height:85px;object-fit:cover;border-radius:10px;flex:none;background:var(--line)}
+li .t{font-weight:600;font-size:15px}
+li .s{font-size:13px;color:var(--ink2)}
+li.on button{outline:3px solid var(--or2)}
+li .n{margin-left:auto;font:700 13px ui-monospace,monospace;color:var(--or2);padding-right:6px}
+.note{margin-top:18px;font-size:13px;color:var(--ink2);background:var(--card);border-radius:16px;padding:12px 14px}
+.note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg viewBox="0 0 100 100"><g fill="none" stroke="#D9480F" stroke-width="10.24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 27.12L50 44.72L82 27.12"/><path d="M18 41.2L50 58.8L82 41.2"/><path d="M18 55.28L50 72.88L82 55.28"/></g></svg>
+    <div><h1>Depo<b>MM</b> · 3 tanıtım videosu</h1><p>9:16 · motion graphics · müzik ve efektler dahil</p></div>
+  </header>
+  <div class="tabs" id="tabs"></div>
+  <p class="hook" id="hook"></p>
+  <div class="player"><video id="v" playsinline controls preload="metadata"></video></div>
+  <div class="bar" id="bar"><i id="prog"></i></div>
+  <div class="meta"><span id="now"></span><span id="tm"></span></div>
+  <div class="ctrl"><button id="prev">◀ Önceki</button><button class="main" id="play">▶ Oynat</button><button id="next">Sonraki ▶</button></div>
+  <div class="ctrl"><a id="dl" download>⬇ Videoyu indir</a></div>
+  <h2>Klipler: dokun, oradan oynasın</h2>
+  <ol id="list"></ol>
+  <div class="note"><b>Notlar.</b> Müzik ve efekt sesleri kodla sentezlendi, telifsiz. Fiyat ve plan bilgisi yok. Arayüz kartları gerçek uygulamaya göre tanıtım için yeniden çizildi; ürün adları, kişiler ve sayılar örnek veridir. Her video Reels/TikTok/Shorts için 1080×1920.</div>
+</main>
+<script>
+const V=[{"id": "v1", "name": "Defteri kapat", "hook": "Defterde 40, rafta 32. 8 tanesinin hesabı kayıtta.", "dur": 27.5, "clips": [{"t": 0, "d": 3.5, "title": "Kanca · defter 40, raf 32", "k": "k/v1-01.jpg"}, {"t": 3.5, "d": 3, "title": "8 adet kayıp", "k": "k/v1-02.jpg"}, {"t": 6.5, "d": 2.5, "title": "Suç defterde", "k": "k/v1-03.jpg"}, {"t": 9, "d": 2.5, "title": "Marka · DepoMM", "k": "k/v1-04.jpg"}, {"t": 11.5, "d": 4, "title": "Barkod okut, sayı düşsün", "k": "k/v1-05.jpg"}, {"t": 15.5, "d": 3.5, "title": "Kim aldı · kayıtta", "k": "k/v1-06.jpg"}, {"t": 19, "d": 3, "title": "Az stok uyarısı", "k": "k/v1-07.jpg"}, {"t": 22, "d": 2, "title": "Defteri kapat", "k": "k/v1-08.jpg"}, {"t": 24, "d": 3.5, "title": "Kapanış", "k": "k/v1-09.jpg"}], "poster": "k/v1-poster.jpg", "mb": 12.4}, {"id": "v2", "name": "Excel'den depoya", "hook": "1.248 ürünü tek tek yazmayacaksın. Excel'i at, gerisini o yapar.", "dur": 29, "clips": [{"t": 0, "d": 3.5, "title": "Kanca · 1.248 ürün", "k": "k/v2-01.jpg"}, {"t": 3.5, "d": 2, "title": "Yazmayacaksın", "k": "k/v2-02.jpg"}, {"t": 5.5, "d": 2.5, "title": "Marka · DepoMM", "k": "k/v2-03.jpg"}, {"t": 8, "d": 3.5, "title": "Excel'i at", "k": "k/v2-04.jpg"}, {"t": 11.5, "d": 4, "title": "Sütunları kendisi tanır", "k": "k/v2-05.jpg"}, {"t": 15.5, "d": 3.5, "title": "Yazmadan önce gösterir", "k": "k/v2-06.jpg"}, {"t": 19, "d": 3, "title": "Raf konumu A-12", "k": "k/v2-07.jpg"}, {"t": 22, "d": 3.5, "title": "PDF rapor, imzalı", "k": "k/v2-08.jpg"}, {"t": 25.5, "d": 3.5, "title": "Kapanış", "k": "k/v2-09.jpg"}], "poster": "k/v2-poster.jpg", "mb": 13.7}, {"id": "v3", "name": "5 soru", "hook": "Depoda her gün sorulan 5 soru, tek uygulamada cevap.", "dur": 30.5, "clips": [{"t": 0, "d": 3, "title": "Kanca · her gün 5 soru", "k": "k/v3-01.jpg"}, {"t": 3, "d": 2, "title": "\"Bilmiyorum\" = satış kaçar", "k": "k/v3-02.jpg"}, {"t": 5, "d": 2, "title": "Marka · DepoMM", "k": "k/v3-03.jpg"}, {"t": 7, "d": 3.5, "title": "Soru 1 · Kaç tane kaldı", "k": "k/v3-04.jpg"}, {"t": 10.5, "d": 3.5, "title": "Soru 2 · Hangi rafta", "k": "k/v3-05.jpg"}, {"t": 14, "d": 3.5, "title": "Soru 3 · Kim aldı", "k": "k/v3-06.jpg"}, {"t": 17.5, "d": 3.5, "title": "Soru 4 · Yanlışlıkla sildim", "k": "k/v3-07.jpg"}, {"t": 21, "d": 3.5, "title": "Soru 5 · Kim neyi görecek", "k": "k/v3-08.jpg"}, {"t": 24.5, "d": 2.5, "title": "Reklam yok, izleme yok", "k": "k/v3-09.jpg"}, {"t": 27, "d": 3.5, "title": "Kapanış", "k": "k/v3-10.jpg"}], "poster": "k/v3-poster.jpg", "mb": 14.0}];
+const v=document.getElementById('v'), list=document.getElementById('list'), tabs=document.getElementById('tabs');
+let cur=null;
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+V.forEach((x,i)=>{ const b=document.createElement('button'); b.innerHTML=`${i+1} · ${x.name}<small>${Math.round(x.dur)} sn</small>`; b.onclick=()=>load(i,true); tabs.appendChild(b); });
+function load(i,play){ cur=V[i]; [...tabs.children].forEach((b,j)=>b.classList.toggle('on',j===i));
+  document.getElementById('hook').textContent=cur.hook;
+  v.src=cur.id+'.mp4'; v.poster=cur.poster; const dl=document.getElementById('dl'); dl.href=cur.id+'.mp4'; dl.textContent=`⬇ Videoyu indir (${cur.mb} MB)`; dl.setAttribute('download',`depomm-${cur.id}.mp4`);
+  const bar=document.getElementById('bar'); bar.querySelectorAll('b').forEach(e=>e.remove());
+  list.innerHTML='';
+  cur.clips.forEach((c,j)=>{ if(j){const m=document.createElement('b'); m.style.left=(c.t/cur.dur*100)+'%'; bar.appendChild(m);}
+    const li=document.createElement('li'); li.innerHTML=`<button><img src="${c.k}" alt=""><span><span class="t">${c.title}</span><br><span class="s">${fmt(c.t)} · ${c.d.toFixed(1)} sn</span></span><span class="n">${String(j+1).padStart(2,'0')}</span></button>`;
+    li.onclick=()=>{v.currentTime=c.t+0.01; v.play();}; list.appendChild(li); });
+  history.replaceState(null,'','#'+cur.id); upd(); if(play) v.play().catch(()=>{}); }
+const ci=()=>{let i=0; cur.clips.forEach((c,j)=>{if(v.currentTime>=c.t-0.01) i=j;}); return i;};
+function upd(){ if(!cur) return; const i=ci(), d=v.duration||cur.dur;
+  document.getElementById('prog').style.width=(v.currentTime/d*100)+'%';
+  document.getElementById('now').textContent=`Klip ${i+1} / ${cur.clips.length} · ${cur.clips[i].title}`;
+  document.getElementById('tm').textContent=`${fmt(v.currentTime)} / ${fmt(d)}`;
+  [...list.children].forEach((li,j)=>li.classList.toggle('on',j===i));
+  document.getElementById('play').textContent=v.paused?'▶ Oynat':'❚❚ Durdur'; }
+['timeupdate','play','pause','loadedmetadata','seeked'].forEach(e=>v.addEventListener(e,upd));
+document.getElementById('play').onclick=()=>v.paused?v.play():v.pause();
+document.getElementById('prev').onclick=()=>{const i=ci(); const back=v.currentTime-cur.clips[i].t>0.6?i:Math.max(0,i-1); v.currentTime=cur.clips[back].t+0.01; v.play();};
+document.getElementById('next').onclick=()=>{const i=Math.min(cur.clips.length-1,ci()+1); v.currentTime=cur.clips[i].t+0.01; v.play();};
+document.getElementById('bar').onclick=e=>{const r=e.currentTarget.getBoundingClientRect(); v.currentTime=(e.clientX-r.left)/r.width*(v.duration||cur.dur);};
+const h=location.hash.slice(1); load(Math.max(0,V.findIndex(x=>x.id===h)),false);
+</script>
+</body>
+</html>
